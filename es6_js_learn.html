@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>learn ES6-js</title>
+</head>
+
+<body>
+    <h1>Hello</h1>
+
+    <script>
+
+        // === 1) let/const & Block Scope ===
+        function demoScope() {
+            let x = 1;
+            const y = 2;
+            if (true) {
+                let x = 10;
+                const z = 99;
+                console.log("inside:", x, y, z);
+            }
+            console.log("outside:", x, y);
+        }
+        demoScope();
+
+        // === 2) Template Literals ===
+        const name2 = "Ali";
+        const items2 = 3;
+        const price2 = 150;
+        const message2 = `Hello ${name2},You bought ${items2} items.Total = ${items2 * price2} EGP`;
+        console.log(message2);
+
+        // === 3) Arrow Functions & this ===
+        const square2 = n => n * n;
+        const sum2 = (a, b) => { const r = a + b; return r; };
+        const counter2 = {
+            value: 0,
+            incLater() {
+                setTimeout(() => {
+                    this.value += 1;
+                    console.log(this.value);
+                }, 500);
+            }
+        };
+        console.log(square2(4));
+        console.log(sum2(2, 5));
+        counter2.incLater();
+
+
+        // === 4) Classes ===
+        class Person2 {
+            constructor(name) { this.name = name; }
+            sayHi() { return `Hi, I'm ${this.name}`; }
+        }
+        class Employee2 extends Person2 {
+            constructor(name, role) { super(name); this.role = role; }
+            info() { return `${this.sayHi()} and I work as ${this.role}`; }
+        }
+        const e2 = new Employee2("Laila", "Frontend Dev");
+        console.log(e2.info());
+
+        // === 5) Promise quick ===
+        const delay2 = ms => new Promise(resolve => setTimeout(resolve, ms));
+        (async function run2() {
+            console.log("Start");
+            await delay2(3000);
+            console.log("After 3000ms");
+        })();
+
+
+    </script>
+
+</body>
+
+</html>
